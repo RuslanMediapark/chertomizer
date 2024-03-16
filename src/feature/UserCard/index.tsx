@@ -3,7 +3,7 @@ import NewPlayer from '@/assets/new.webp';
 import NormalUser from '@/assets/user.webp';
 
 import './style.scss';
-import { getRandomElementsFromArray } from "@/utils";
+import { getRandomElementsFromArray } from "../../utils";
 
 
 interface StripProps {
