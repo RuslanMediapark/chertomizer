@@ -71,7 +71,7 @@ export const UserCard: FC<StripProps> = ({
   const randomImages: string[] = getRandomElementsFromArray(images, 6);
   return (
     <div className={`user-card-wrapper ${colIndex === selectedUser && 'active'}`}>
-      <button className="cross" onClick={removeUser}><CrossIcon /></button>
+      {colIndex !== selectedUser && <button className="cross" onClick={removeUser}><CrossIcon /></button>}
       <div className="image-container" ref={containerRef} style={style}>
         {getImage()}
         {randomImages.map((src, index) => <img style={{
