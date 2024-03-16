@@ -4,6 +4,7 @@ import NormalUser from '@/assets/user.webp';
 
 import './style.scss';
 import { getRandomElementsFromArray } from "../../utils";
+import { CrossIcon } from "../../shared/SVG/Cross";
 
 
 interface StripProps {
@@ -16,6 +17,7 @@ interface StripProps {
   selectedImage: number | null;
   style: any;
   setRolling: (value: boolean) => void;
+  removeUser: () => void;
 }
 
 
@@ -25,15 +27,15 @@ export const UserCard: FC<StripProps> = ({
   isNew,
   style,
   rolling,
-  setRolling,
   selectedUser,
   selectedImage,
   colIndex,
+  setRolling,
+  removeUser,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log(containerRef.current)
     if (!containerRef.current) return; 
 
     const maxScroll = containerRef.current.scrollHeight - containerRef.current.clientHeight;
@@ -69,6 +71,7 @@ export const UserCard: FC<StripProps> = ({
   const randomImages: string[] = getRandomElementsFromArray(images, 6);
   return (
     <div className={`user-card-wrapper ${colIndex === selectedUser && 'active'}`}>
+      <button className="cross" onClick={removeUser}><CrossIcon /></button>
       <div className="image-container" ref={containerRef} style={style}>
         {getImage()}
         {randomImages.map((src, index) => <img style={{

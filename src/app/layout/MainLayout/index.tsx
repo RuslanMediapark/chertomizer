@@ -11,7 +11,7 @@ export const MainLayout: FC<Props> = ({
 }) => {
   return (
     <div className="main-layout" style={style}>
-      <UsersList />
+      {/* <UsersList /> */}
       <div className="main-wrapper">
         <UserCards />
         <Adduser />

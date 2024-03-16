@@ -7,23 +7,23 @@ import {
 export const App: FC = () => {
   const [background, setBackground] = useState('radial-gradient(#311218, #000c14)');
 
-  useEffect(() => {
-    const updateBackground = (event: MouseEvent) => {
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
+  // useEffect(() => {
+  //   const updateBackground = (event: MouseEvent) => {
+  //     const windowWidth = window.innerWidth;
+  //     const windowHeight = window.innerHeight;
 
-      const mouseXpercentage = Math.round((event.pageX / windowWidth) * 100);
-      const mouseYpercentage = Math.round((event.pageY / windowHeight) * 100);
+  //     const mouseXpercentage = Math.round((event.pageX / windowWidth) * 100);
+  //     const mouseYpercentage = Math.round((event.pageY / windowHeight) * 100);
 
-      setBackground(`radial-gradient(at ${mouseXpercentage}% ${mouseYpercentage}%, #311218, #000c14)`);
-    };
+  //     setBackground(`radial-gradient(at ${mouseXpercentage}% ${mouseYpercentage}%, #311218, #000c14)`);
+  //   };
 
-    document.addEventListener('mousemove', updateBackground);
+  //   document.addEventListener('mousemove', updateBackground);
 
-    return () => {
-      document.removeEventListener('mousemove', updateBackground);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener('mousemove', updateBackground);
+  //   };
+  // }, []);
   
   return (
     <RecoilRoot>

@@ -4,20 +4,37 @@
   padding: 2px;
   border-radius: 3px;
   background-image: linear-gradient(340deg, #000c14 30%, #f8002f);
-  transition: all .3s ease-in-out;
+  transition: all 1s ease-in;
+  position: relative;
+  z-index: 0;
+
+  .cross {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    outline: none;
+    border: none;
+    &:hover {
+      border: none;
+    }
+  };
   
   &.active {
     box-shadow: 0px 0px 100px 10px #f8002f;
-    transform: translate(50%, -50%) scale(3);
+    transform: translate(-50%, -50%) scale(2.7);
     position: fixed;
     top: 50%;
     left: 50%;
+    z-index: 1;
   }
 }
 
 .image-container {
   overflow: hidden;
-  height: 200px; /* Высота, чтобы показывать только одно изображение */
+  height: 200px;
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -26,10 +43,6 @@
 }
 
 .image-container img {
-  width: 100%; /* Ширина изображения подгоняется под контейнер */
+  width: 100%;
   transition: transform 0.5s ease;
-
-  &.active {
-    
-  }
 }
