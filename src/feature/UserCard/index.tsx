@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef } from "react";
 import NewPlayer from '@/assets/new.webp';
 import NormalUser from '@/assets/user.webp';
 
