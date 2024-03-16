@@ -66,7 +66,7 @@ export const UserCards: FC<Props> = () => {
       {Boolean(usersList.length) && (
         <div className={`actions ${selectedUser !== null && 'find-user'}`}>
           <button onClick={shuffleImages}>Chertanut'</button>
-          <button onClick={() => handleReset()}>Spin</button>
+          <button onClick={() => handleReset()}>Refresh</button>
           <button onClick={() => resetUsers()}>Reset</button>
         </div>
       )}

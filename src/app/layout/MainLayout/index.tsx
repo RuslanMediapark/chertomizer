@@ -3,9 +3,14 @@ import "./style.scss";
 import { Adduser, UserCards } from "../../../feature";
 import { UsersList } from "../../../feature/UsersList";
 
-export const MainLayout: FC = () => {
+type Props = {
+  style: any;
+}
+export const MainLayout: FC<Props> = ({
+  style
+}) => {
   return (
-    <div className="main-layout">
+    <div className="main-layout" style={style}>
       <UsersList />
       <div className="main-wrapper">
         <UserCards />

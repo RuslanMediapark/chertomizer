@@ -3,6 +3,7 @@ import NewPlayer from '@/assets/new.webp';
 import NormalUser from '@/assets/user.webp';
 
 import './style.scss';
+import { getRandomElementsFromArray } from "@/utils";
 
 
 interface StripProps {
@@ -32,7 +33,8 @@ export const UserCard: FC<StripProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return; // Прекращаем анимацию, если выбрано изображение
+    console.log(containerRef.current)
+    if (!containerRef.current) return; 
 
     const maxScroll = containerRef.current.scrollHeight - containerRef.current.clientHeight;
     let startTime: number | null = null;
@@ -40,13 +42,12 @@ export const UserCard: FC<StripProps> = ({
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
-      const position = progress * 2; // Ускорение прокрутки
-
+      const position = progress * 2;
       if (containerRef.current) {
         containerRef.current.scrollTop = position % maxScroll;
       }
 
-      if (progress < 2000) { // Длительность анимации
+      if (progress < 2000) { 
         window.requestAnimationFrame(animate);
         setRolling(false)
       }
@@ -62,18 +63,17 @@ export const UserCard: FC<StripProps> = ({
       return <img src={images[selectedImage]} alt={`Slot Machine Image`} />
     } else if(selectedImage && colIndex !== selectedUser) {
       return <img src={NormalUser} alt={`Slot Machine Image`} />
-    } else {
-      return images.map((src, index) => {
-        return (
-          <img key={index} src={src} alt={`Slot Machine Image ${index + 1}`} />
-        )
-      })
     }
   };
+
+  const randomImages: string[] = getRandomElementsFromArray(images, 6);
   return (
     <div className={`user-card-wrapper ${colIndex === selectedUser && 'active'}`}>
       <div className="image-container" ref={containerRef} style={style}>
         {getImage()}
+        {randomImages.map((src, index) => <img style={{
+          display: isNew || (selectedImage && colIndex === selectedUser) || (selectedImage && colIndex !== selectedUser) ? 'none' : 'block'
+        }}key={index} src={src} alt={`Slot Machine Image ${index + 1}`} />)}
       </div>
       <p>{name && name}</p>
     </div>
