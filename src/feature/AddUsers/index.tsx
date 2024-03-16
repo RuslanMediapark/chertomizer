@@ -1,21 +1,23 @@
 import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilState } from "recoil";
-import { UsersType, usersState } from "../../store";
-import { v4 as uuidv4 } from 'uuid';
-import './style.scss';
+import { useRecoilState, useRecoilValue } from "recoil";
+import { UsersType, chertUserState, usersState } from "../../store";
+import { v4 as uuidv4 } from "uuid";
+import "./style.scss";
 
 type Inputs = {
-  name: string
-}
-
+  name: string;
+};
+const formText = {
+  placeholder: 'Впиши имя/ник друга',
+  button: 'Добавить'
+};
 export const Adduser: FC = () => {
   const [users, addUser] = useRecoilState<UsersType[]>(usersState);
-  const { 
-    handleSubmit,
-    register,
-    reset
-  } = useForm({
+  const selectedUser = useRecoilValue<number | null>(
+    chertUserState
+  );
+  const { handleSubmit, register, reset } = useForm({
     defaultValues: {
       name: "",
     },
@@ -27,16 +29,24 @@ export const Adduser: FC = () => {
       reset();
       return;
     }
-    addUser((oldValues: UsersType[]) => [...oldValues, { name, id: uuidv4(), new: true }]);
+    addUser((oldValues: UsersType[]) => [
+      ...oldValues,
+      { name, id: uuidv4(), new: true },
+    ]);
     reset();
-  }
+  };
   return (
     <div className="add-user">
-      <form onSubmit={handleSubmit(onSubmit)}>
-      <input defaultValue="test" {...register("name")} placeholder="Type name of chert"/>
-      <button type="submit">Add to list this chert</button>
-      </form>
+      {!selectedUser && (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            defaultValue="test"
+            {...register("name")}
+            placeholder={formText.placeholder}
+          />
+          <button type="submit">{formText.button}</button>
+        </form>
+      )}
     </div>
-
   );
 };

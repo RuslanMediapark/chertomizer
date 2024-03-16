@@ -1,3 +1,5 @@
+$layout-breakpoint-small: 767px;
+
 .users-cards-wrapper {
   display: flex;
   justify-content: center;
@@ -27,4 +29,22 @@
   justify-content: center;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
+}
+
+@media (max-width: $layout-breakpoint-small) {
+  .users-cards-wrapper{
+    .logo-image {
+      width: 100%;
+    }
+  }
+
+  .users-card-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .actions {
+    button {
+      font-size: 14px;
+    }
+  }
 }
