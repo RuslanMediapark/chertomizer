@@ -1,0 +1,12 @@
+.main-layout {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 20% 1fr;
+
+
+    .main-wrapper {
+        display: grid;
+        grid-template-rows: 1fr 100px;
+    }
+
+}
