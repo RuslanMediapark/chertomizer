@@ -14,6 +14,7 @@ export const MainLayout: FC<Props> = ({
         <UserCards />
         <Adduser />
       </div>
+      <p className="copyright">Powered by Littlewell & Eugen</p>
     </div>
   );
 };
