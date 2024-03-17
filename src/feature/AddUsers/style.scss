@@ -11,9 +11,11 @@
             margin: 0;
             padding: 0 10px;
             border: none;
+            border-radius: 8px;
         }
         button {
             height: 42px;
+            line-height: 0;
         }
     }
 }

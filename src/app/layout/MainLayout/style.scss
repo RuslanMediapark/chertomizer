@@ -1,20 +1,30 @@
+$layout-breakpoint-small: 767px;
+
 .main-layout {
-    height: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  .main-wrapper {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 100px;
+  }
 
+  .copyright {
+    font-size: 10px;
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+  }
+}
 
-    .main-wrapper {
-        display: grid;
-        grid-template-rows: 1fr 100px;
-    }
-
+@media (max-width: $layout-breakpoint-small) {
+  .main-layout {
     .copyright {
-        font-size: 10px;
-        position: fixed;
-        bottom: 5px;
-        right: 5px;
-
+      font-size: 8px;
+      position: fixed;
+      bottom: 2px;
+      right: 5px;
     }
-
+  }
 }
