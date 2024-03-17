@@ -10,7 +10,7 @@ import {
 } from "../../store";
 import Logo from "@/assets/logo.webp";
 import copy from "copy-text-to-clipboard";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserCard } from "..";
 
 import "./styles.scss";
@@ -35,12 +35,12 @@ export const UserCards: FC<Props> = () => {
 
   const images = useRecoilValue(imagesState);
   const navigate = useNavigate();
-  const params = useParams();
   
   useEffect(() => {
-    if (params.id) {
+    if (window.location.search) {
       try {
-        const decode = decodeURIComponent(escape(atob(params.id)));
+
+        const decode = decodeURIComponent(escape(atob(window.location.search.replace(/^\?/, ''))));
         const result = JSON.parse(decode);
 
         setUsersList(result.usersList);
@@ -71,7 +71,7 @@ export const UserCards: FC<Props> = () => {
       const toJSON = JSON.stringify(result);
       const encodedData = btoa(unescape(encodeURIComponent(toJSON)));
 
-      navigate(`/${encodedData}`);
+      navigate(`/?${encodedData}`);
     }, 2000);
   };
 

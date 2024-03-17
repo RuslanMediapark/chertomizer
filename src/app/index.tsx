@@ -4,17 +4,20 @@ import { App } from ".";
 
 import "@app/styles/index.css";
 import "@app/styles/App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Outlet />,
+    children: [
+      {
+        path: "/",
+        element: <App />,
+      },
+    ]
   },
-  {
-    path: "/:id",
-    element: <App />,
-  },
+ 
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
