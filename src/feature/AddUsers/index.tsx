@@ -37,7 +37,7 @@ export const Adduser: FC = () => {
   };
   return (
     <div className="add-user">
-      {!selectedUser && (
+      {selectedUser === null && (
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             defaultValue="test"

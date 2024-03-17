@@ -79,7 +79,7 @@ export const UserCard: FC<StripProps> = ({
       onClick={hadleClick}
       className={`user-card-wrapper ${colIndex === selectedUser && "isChert active"}`}
     >
-      {!selectedUser && (
+      {selectedUser === null && (
         <button className="cross" onClick={removeUser}>
           <CrossIcon />
         </button>

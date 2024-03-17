@@ -118,13 +118,13 @@ export const UserCards: FC<Props> = () => {
       )}
       {Boolean(usersList.length) && (
         <div className={`actions ${selectedUser !== null && "find-user"}`}>
-          {!Boolean(selectedUser) && (
+          {selectedUser === null && (
             <button onClick={shuffleImages}>{buttonsText.action}</button>
           )}
-          {Boolean(selectedUser) && (
+          {selectedUser !== null && (
             <>
               <button onClick={copyLink}>{buttonsText.copy}</button>
-              <button>
+              {/* <button>
                 <a
                   target="_blank"
                   href={`https://telegram.me/share/url?url=${encodeURIComponent(
@@ -136,10 +136,10 @@ export const UserCards: FC<Props> = () => {
                 >
                   {buttonsText.telegram}
                 </a>
-              </button>
+              </button> */}
             </>
           )}
-          {(!usersList.length || Boolean(selectedUser)) && (
+          {(!usersList.length || selectedUser !== null) && (
             <button onClick={() => resetUsers()}>{buttonsText.reset}</button>
           )}
         </div>
