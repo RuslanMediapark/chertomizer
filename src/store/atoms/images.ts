@@ -6,8 +6,8 @@ import Devil4 from "../../assets/4.webp";
 import Devil5 from "../../assets/5.webp";
 import Devil6 from "../../assets/6.webp";
 import Devil7 from "../../assets/7.webp";
-import Devil8 from "../../assets/8.webp";
-import Devil9 from "../../assets/9.webp";
+// import Devil8 from "../../assets/8.webp";
+// import Devil9 from "../../assets/9.webp";
 import Devil10 from "../../assets/10.webp";
 import Devil11 from "../../assets/11.webp";
 import Devil13 from "../../assets/13.webp";
@@ -28,8 +28,6 @@ export const imagesState = atom({
         Devil5,
         Devil6,
         Devil7,
-        Devil8,
-        Devil9,
         Devil10,
         Devil11,
         Devil13,
